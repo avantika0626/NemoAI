@@ -1,110 +1,143 @@
-# 🐠 Nemo AI — Your Day. Your Tasks. Your Flow.
+# 🐠 Nemo AI — Intelligent Planning Command Center
 
-**Nemo AI** is an AI-powered personal planning companion built with **Python**, **Streamlit**, **Google Gemini AI (Text & Vision)**, and **Twilio WhatsApp Content API**.
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://nemo-planner.streamlit.app)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-3.8%20Flash-orange.svg)](https://aistudio.google.com/)
+[![Twilio WhatsApp](https://img.shields.io/badge/Twilio-WhatsApp%20Content%20API-green.svg)](https://www.twilio.com/)
 
-Nemo turns messy braindumps, handwritten to-do lists, whiteboard notes, and busy timetables into structured, stress-free daily schedules and study plans.
+**Nemo AI** is a modern, high-performance AI personal planning companion built with **Streamlit**, **Google Gemini AI (Text & Multimodal Vision)**, and **Twilio WhatsApp Content API**.
 
----
-
-## 🌟 Core Features
-
-1. **👤 Session Onboarding:** Enter your name and WhatsApp number once per session to receive personalized plans.
-2. **💬 Chatbot-First Planning:** Chat with Nemo to organize tasks, prioritize urgent items, and build realistic time-blocked schedules with built-in breaks.
-3. **📸 Visual Intelligence (Gemini Vision):** Attach photos of handwritten notes, planners, whiteboards, or timetables. Nemo reads your notes, flags unclear handwriting, and structures the tasks.
-4. **⚡ Focus Energy Modes:** Switch between *Balanced Flow (25m/5m)*, *Deep Focus Sprint (45m/10m)*, and *Gentle Steps (15m micro-wins)*.
-5. **📲 "Send My Plan" WhatsApp Integration:**
-   * **Twilio Content API:** Dispatches the AI-generated schedule directly to your phone via WhatsApp Sandbox.
-   * **1-Click Web/Mobile Link:** Direct WhatsApp link fallback that works instantly on any device.
-   * **Export & Download:** One-click copy and `.txt` / `.md` file downloads.
+Nemo transforms chaotic to-do lists, handwritten notes, whiteboard photos, and busy timetables into structured, realistic, and stress-free schedules delivered straight to your WhatsApp.
 
 ---
 
-## 📁 Project Structure
+## 🌐 Live Demo
+
+🔗 **Try it online:** [https://nemo-planner.streamlit.app](https://nemo-planner.streamlit.app)
+
+---
+
+## ✨ Features
+
+- **💬 Intelligent Conversational Planning**: Chat with Nemo to prioritize tasks, create time-blocked schedules, and balance study/work sessions with built-in breaks.
+- **📸 Visual Intelligence (Gemini Vision)**: Attach handwritten notes, planner pages, or timetable photos — Nemo transcribes them and organizes tasks automatically.
+- **📲 WhatsApp Plan Dispatch**:
+  - **Twilio Content API**: Direct automated summary messages dispatched to WhatsApp.
+  - **1-Click Web Fallback**: Open and send your plan directly into WhatsApp web/mobile with one tap.
+- **🎨 Strativa-Inspired Dashboard**: Clean, responsive, high-contrast dark sidebar with light-mode workspace.
+- **⚡ Focus Modes & Starters**: 1-click starters for *Plan My Day*, *Study Timetable*, *Brain Dump & Prioritise*, and *2-Hour Focus Sprint*.
+
+---
+
+## 📁 Repository Structure
 
 ```text
 NemoAI/
-├── app.py                     # Streamlit application (Onboarding, Dashboard, Chat & WhatsApp)
+├── app.py                     # Main Streamlit application
 ├── prompts.py                 # Nemo AI specialized planning prompts & templates
-├── requirements.txt           # Python dependencies (streamlit, google-genai, twilio, Pillow)
-├── README.md                  # Project setup and user guide
-├── .gitignore                 # Excludes secrets.toml and virtual environments
+├── requirements.txt           # Python package dependencies
+├── README.md                  # Setup and usage documentation
+├── .gitignore                 # Protects secrets and virtual environment from Git
 └── .streamlit/
-    ├── secrets.toml           # Your private API keys (never committed to Git)
-    └── secrets.toml.example   # Example template for required credentials
+    ├── config.toml            # Streamlit UI theme and server configuration
+    ├── secrets.toml           # Private API keys (DO NOT COMMIT)
+    └── secrets.toml.example   # Secrets template for deployment
 ```
 
 ---
 
-## 🚀 Setup & Installation Guide (Windows)
+## 🚀 Local Setup Instructions
 
-### Step 1: Open Project in VS Code
-Open your terminal in the project directory:
-```powershell
-cd c:\Users\hp\OneDrive\Desktop\NemoAI
+### 1. Clone the Repository
+```bash
+git clone https://github.com/avantika0626/NemoAI.git
+cd NemoAI
 ```
 
-### Step 2: Activate Virtual Environment
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
+### 2. Create and Activate Virtual Environment
+- **Windows (PowerShell):**
+  ```powershell
+  python -m venv .venv
+  .\.venv\Scripts\Activate.ps1
+  ```
+- **macOS / Linux:**
+  ```bash
+  python3 -m venv .venv
+  source .venv/bin/activate
+  ```
 
-### Step 3: Install Required Dependencies
-```powershell
+### 3. Install Dependencies
+```bash
 pip install -r requirements.txt
 ```
 
----
+### 4. Configure API Keys
+1. Duplicate `.streamlit/secrets.toml.example` and name it `.streamlit/secrets.toml`:
+   - **Windows:** `copy .streamlit\secrets.toml.example .streamlit\secrets.toml`
+   - **macOS/Linux:** `cp .streamlit/secrets.toml.example .streamlit/secrets.toml`
 
-## 🔑 Configuring API Credentials
+2. Open `.streamlit/secrets.toml` in your editor and add your keys:
+   ```toml
+   # Google Gemini API Key (Required)
+   # Get a free key at: https://aistudio.google.com/app/apikey
+   GEMINI_API_KEY = "your_gemini_api_key_here"
 
-Open `.streamlit/secrets.toml` in VS Code and fill in your keys:
+   # Twilio WhatsApp Credentials (Optional - for direct WhatsApp API delivery)
+   TWILIO_ACCOUNT_SID = "your_twilio_account_sid_here"
+   TWILIO_AUTH_TOKEN = "your_twilio_auth_token_here"
+   TWILIO_WHATSAPP_FROM = "whatsapp:+14155238886"
+   TWILIO_CONTENT_SID = "your_twilio_content_sid_here"
+   ```
 
-```toml
-# 1. Google Gemini API Key (Required)
-# Get your free key from Google AI Studio: https://aistudio.google.com/
-GEMINI_API_KEY = "AIzaSy..."
-
-# 2. Twilio WhatsApp Credentials (Optional / for SMS Dispatch)
-# Get these from your Twilio Console: https://console.twilio.com/
-TWILIO_ACCOUNT_SID = "AC..."
-TWILIO_AUTH_TOKEN = "your_auth_token_here"
-TWILIO_WHATSAPP_FROM = "whatsapp:+14155238886"
-TWILIO_CONTENT_SID = "HX..."
-```
-
----
-
-## 📱 Twilio WhatsApp Sandbox & Template Setup
-
-To test automated WhatsApp delivery with the workshop Content API:
-
-### 1. Join the Twilio Sandbox
-* In your [Twilio Console](https://console.twilio.com/), go to **Messaging > Try it out > Send a WhatsApp message**.
-* Open WhatsApp on your phone and send the sandbox join keyword (e.g. `join <your-keyword>`) to `+1 415 523 8886`.
-
-### 2. Create a WhatsApp Content Template
-* In Twilio Console, go to **Explore Products > Content Editor / Content Template Builder**.
-* Create a new WhatsApp Template:
-  * Variable `{{1}}`: Recipient's Name
-  * Variable `{{2}}`: Daily Plan Summary
-* Once approved, copy the **Content SID** (starts with `HX...`) and paste it into `.streamlit/secrets.toml` as `TWILIO_CONTENT_SID`.
-
----
-
-## ▶️ Running the Application
-
-In your terminal:
-```powershell
+### 5. Run the Application
+```bash
 streamlit run app.py
 ```
-
-The application will open automatically at `http://localhost:8501`.
+Open [http://localhost:8501](http://localhost:8501) in your browser.
 
 ---
 
-## 🧪 Testing Checklist
+## ☁️ Deploying to Streamlit Community Cloud
 
-1. **Onboarding:** Enter your name and WhatsApp number (with international country code e.g. `+14155552671` or `+919876543210`).
-2. **Text Planning:** Type a message like *"I have a math test on Friday and chemistry homework due tomorrow. Plan my afternoon."*
-3. **Photo Analysis:** Open the **"📸 Attach / Upload Notes"** drawer, upload a picture of a to-do list, and click **"⚡ Extract Tasks & Plan Now"**.
-4. **Send My Plan:** Click **"📲 Send Plan to WhatsApp"** in the sidebar to test delivery to your phone.
+1. Push your repository to GitHub (ensure `.streamlit/secrets.toml` is **not** committed).
+2. Go to **[share.streamlit.io](https://share.streamlit.io/)** and sign in with GitHub.
+3. Click **Create app** and configure:
+   - **Repository**: `your-username/NemoAI`
+   - **Branch**: `main`
+   - **Main file path**: `app.py`
+4. Expand **Advanced settings → Secrets** and paste your `.streamlit/secrets.toml` content:
+   ```toml
+   GEMINI_API_KEY = "your_gemini_api_key_here"
+   TWILIO_ACCOUNT_SID = "your_twilio_account_sid_here"
+   TWILIO_AUTH_TOKEN = "your_twilio_auth_token_here"
+   TWILIO_WHATSAPP_FROM = "whatsapp:+14155238886"
+   TWILIO_CONTENT_SID = "your_twilio_content_sid_here"
+   ```
+5. Click **Deploy!**
+
+---
+
+## 🔑 Getting Your API Keys
+
+### 1. Google Gemini API (Free)
+1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey).
+2. Sign in with your Google account.
+3. Click **Create API Key** and copy the key into `.streamlit/secrets.toml`.
+
+### 2. Twilio WhatsApp Sandbox (Optional)
+1. Sign up for a free account at [Twilio Console](https://console.twilio.com/).
+2. Under **Messaging > Try it out > Send a WhatsApp message**, join the WhatsApp Sandbox by sending the `join <code>` message to Twilio's number.
+3. Copy `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, and `TWILIO_WHATSAPP_FROM` into `.streamlit/secrets.toml`.
+
+---
+
+## 🛡️ Privacy & Security
+
+- **Private Secrets**: [`.gitignore`](.gitignore) prevents `.streamlit/secrets.toml` and `.env` files from ever being pushed to public source control.
+- **Client Sanitization**: Sensitive keys are securely accessed through Streamlit's secrets manager and are never rendered in frontend responses or logs.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License — feel free to use and customize it!
