@@ -529,17 +529,44 @@ def test_gemini_connection(client: Optional[genai.Client]) -> Tuple[bool, str]:
         return False, f"API Error: {sanitized}"
 
 
-def init_chat_session(client: genai.Client) -> Optional[object]:
-    """Initialize a Gemini chat session with Nemo's system prompt."""
-    try:
-        return client.chats.create(
-            model=MODEL_NAME,
-            config=types.GenerateContentConfig(
-                system_instruction=NEMO_SYSTEM_PROMPT,
-            ),
-        )
-    except Exception:
-        return None
+def build_gemini_history(messages: list) -> list:
+    """Convert session messages into a clean alternating list of Google GenAI Content objects."""
+    raw_contents = []
+    for idx, m in enumerate(messages):
+        role = "user" if m.get("role") == "user" else "model"
+        # Skip the initial assistant welcome greeting if it's the first message
+        if idx == 0 and role == "model":
+            continue
+
+        parts = []
+        if m.get("image") is not None:
+            parts.append(
+                types.Part.from_bytes(
+                    data=m["image"],
+                    mime_type=m.get("mime_type") or "image/jpeg",
+                )
+            )
+        if m.get("content"):
+            parts.append(types.Part.from_text(text=str(m["content"])))
+
+        if parts:
+            raw_contents.append((role, parts))
+
+    # Merge consecutive identical roles to maintain strict alternating conversation
+    sanitized_contents = []
+    for role, parts in raw_contents:
+        if not sanitized_contents:
+            if role != "user":
+                continue
+            sanitized_contents.append(types.Content(role=role, parts=parts))
+        else:
+            prev_content = sanitized_contents[-1]
+            if prev_content.role == role:
+                prev_content.parts.extend(parts)
+            else:
+                sanitized_contents.append(types.Content(role=role, parts=parts))
+
+    return sanitized_contents
 
 
 def get_greeting(name: str) -> str:
@@ -718,10 +745,6 @@ if not st.session_state.onboarded:
             else:
                 st.session_state.user_name = name_input.strip()
                 st.session_state.whatsapp_number = phone_input.strip()
-
-                if gemini_client:
-                    st.session_state.chat_session = init_chat_session(gemini_client)
-
                 st.session_state.onboarded = True
                 welcome_text = WELCOME_MESSAGE_TEMPLATE.format(name=st.session_state.user_name)
                 st.session_state.messages = [
@@ -809,12 +832,25 @@ else:
             st.button("📲 Send to WhatsApp", disabled=True, use_container_width=True, help="Chat with Nemo first to generate a plan to send.")
         else:
             if st.button("📲 Send to WhatsApp", type="primary", use_container_width=True):
-                if not gemini_client or not st.session_state.chat_session:
+                if not gemini_client:
                     st.info("💡 Please add your `GEMINI_API_KEY` in `.streamlit/secrets.toml` to generate an AI plan summary.")
                 else:
                     with st.spinner("Generating plan summary..."):
                         try:
-                            summary_res = st.session_state.chat_session.send_message(PLAN_SUMMARY_PROMPT)
+                            summary_history = build_gemini_history(st.session_state.messages)
+                            summary_history.append(
+                                types.Content(
+                                    role="user",
+                                    parts=[types.Part.from_text(text=PLAN_SUMMARY_PROMPT)],
+                                )
+                            )
+                            summary_res = gemini_client.models.generate_content(
+                                model=MODEL_NAME,
+                                contents=summary_history,
+                                config=types.GenerateContentConfig(
+                                    system_instruction=NEMO_SYSTEM_PROMPT,
+                                ),
+                            )
                             plan_text = summary_res.text or "No summary generated."
                             st.session_state.generated_plan_summary = plan_text
                         except Exception as err:
@@ -983,35 +1019,20 @@ else:
         if not gemini_client:
             st.error("Please configure your `GEMINI_API_KEY` in `.streamlit/secrets.toml`.")
         else:
-            # Ensure chat session exists
-            if st.session_state.chat_session is None:
-                st.session_state.chat_session = init_chat_session(gemini_client)
-
-            # Construct Gemini Payload
-            if image_bytes:
-                image_part = types.Part.from_bytes(
-                    data=image_bytes,
-                    mime_type=image_mime or "image/jpeg",
-                )
-                gemini_payload = [image_part, active_prompt]
-            else:
-                gemini_payload = active_prompt
+            # Build full conversation history payload for Gemini
+            gemini_payload = build_gemini_history(st.session_state.messages)
 
             # Call Gemini API
             with st.spinner("🐠 Nemo is organizing your plan..."):
                 try:
-                    if st.session_state.chat_session is not None:
-                        response = st.session_state.chat_session.send_message(gemini_payload)
-                        assistant_text = response.text or "I wasn't able to construct a response. Could you clarify your task?"
-                    else:
-                        resp = gemini_client.models.generate_content(
-                            model=MODEL_NAME,
-                            contents=gemini_payload,
-                            config=types.GenerateContentConfig(
-                                system_instruction=NEMO_SYSTEM_PROMPT,
-                            ),
-                        )
-                        assistant_text = resp.text or "I wasn't able to construct a response. Could you clarify your task?"
+                    resp = gemini_client.models.generate_content(
+                        model=MODEL_NAME,
+                        contents=gemini_payload,
+                        config=types.GenerateContentConfig(
+                            system_instruction=NEMO_SYSTEM_PROMPT,
+                        ),
+                    )
+                    assistant_text = resp.text or "I wasn't able to construct a response. Could you clarify your task?"
 
                     st.session_state.messages.append({
                         "role": "assistant",
@@ -1023,7 +1044,7 @@ else:
                     sanitized_err = re.sub(r"AIza[0-9A-Za-z-_]{35}", "[REDACTED_API_KEY]", raw_err)
                     err_msg = (
                         f"🐠 **Gemini Notice:** {sanitized_err}\n\n"
-                        "*Please check your `GEMINI_API_KEY` in `.streamlit/secrets.toml` or verify API quota.*"
+                        "*Please try sending your message again or check API quota.*"
                     )
                     st.session_state.messages.append({
                         "role": "assistant",
@@ -1032,4 +1053,5 @@ else:
                     })
 
             st.rerun()
+
 
