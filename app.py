@@ -31,7 +31,14 @@ PLAN_SUMMARY_PROMPT = getattr(prompts, "PLAN_SUMMARY_PROMPT", getattr(prompts, "
 # -----------------------------------------------------------------------------
 # App Configuration & Constants
 # -----------------------------------------------------------------------------
-MODEL_NAME = "gemini-3.8-flash"
+CANDIDATE_MODELS = [
+    "gemini-flash-lite-latest",
+    "gemini-3.5-flash-lite",
+    "gemini-3.1-flash-lite",
+    "gemini-3.5-flash",
+    "gemini-flash-latest",
+]
+MODEL_NAME = CANDIDATE_MODELS[0]
 
 st.set_page_config(
     page_title="Nemo AI - Intelligent Planning Command Center 🐠",
@@ -507,6 +514,30 @@ def get_gemini_client(api_key: str) -> Optional[genai.Client]:
         return None
 
 
+def generate_content_with_fallback(
+    client: genai.Client,
+    contents: object,
+    config: Optional[types.GenerateContentConfig] = None,
+) -> Tuple[str, str]:
+    """Generate content attempting candidate models in order to avoid 429 quota exhaustion."""
+    last_err = None
+    for model in CANDIDATE_MODELS:
+        try:
+            resp = client.models.generate_content(
+                model=model,
+                contents=contents,
+                config=config,
+            )
+            if resp and resp.text:
+                return resp.text, model
+        except Exception as e:
+            last_err = e
+            continue
+    if last_err:
+        raise last_err
+    return "I wasn't able to construct a response.", CANDIDATE_MODELS[0]
+
+
 def test_gemini_connection(client: Optional[genai.Client]) -> Tuple[bool, str]:
     """Test live Google Gemini API connectivity. Never logs or exposes the API key."""
     if not client:
@@ -515,12 +546,12 @@ def test_gemini_connection(client: Optional[genai.Client]) -> Tuple[bool, str]:
             "No active Gemini key found. Please paste your GEMINI_API_KEY in `.streamlit/secrets.toml`.",
         )
     try:
-        response = client.models.generate_content(
-            model=MODEL_NAME,
+        response_text, model_used = generate_content_with_fallback(
+            client=client,
             contents="Ping",
         )
-        if response and response.text:
-            return True, f"Connection to Google Gemini ({MODEL_NAME}) is active & working!"
+        if response_text:
+            return True, f"Connection to Google Gemini ({model_used}) is active & working!"
         return False, "Connected to Gemini, but received empty response."
     except Exception as err:
         err_msg = str(err)
@@ -844,14 +875,13 @@ else:
                                     parts=[types.Part.from_text(text=PLAN_SUMMARY_PROMPT)],
                                 )
                             )
-                            summary_res = gemini_client.models.generate_content(
-                                model=MODEL_NAME,
+                            plan_text, _ = generate_content_with_fallback(
+                                client=gemini_client,
                                 contents=summary_history,
                                 config=types.GenerateContentConfig(
                                     system_instruction=NEMO_SYSTEM_PROMPT,
                                 ),
                             )
-                            plan_text = summary_res.text or "No summary generated."
                             st.session_state.generated_plan_summary = plan_text
                         except Exception as err:
                             plan_text = ""
@@ -1025,14 +1055,13 @@ else:
             # Call Gemini API
             with st.spinner("🐠 Nemo is organizing your plan..."):
                 try:
-                    resp = gemini_client.models.generate_content(
-                        model=MODEL_NAME,
+                    assistant_text, _ = generate_content_with_fallback(
+                        client=gemini_client,
                         contents=gemini_payload,
                         config=types.GenerateContentConfig(
                             system_instruction=NEMO_SYSTEM_PROMPT,
                         ),
                     )
-                    assistant_text = resp.text or "I wasn't able to construct a response. Could you clarify your task?"
 
                     st.session_state.messages.append({
                         "role": "assistant",
@@ -1044,7 +1073,7 @@ else:
                     sanitized_err = re.sub(r"AIza[0-9A-Za-z-_]{35}", "[REDACTED_API_KEY]", raw_err)
                     err_msg = (
                         f"🐠 **Gemini Notice:** {sanitized_err}\n\n"
-                        "*Please try sending your message again or check API quota.*"
+                        "*You can also grab a fresh free API key instantly from [Google AI Studio](https://aistudio.google.com/app/apikey).*"
                     )
                     st.session_state.messages.append({
                         "role": "assistant",
