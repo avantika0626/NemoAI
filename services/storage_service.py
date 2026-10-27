@@ -205,6 +205,18 @@ def init_session_state() -> None:
     if "uploaded_image_mime" not in st.session_state:
         st.session_state.uploaded_image_mime = None
 
+    if "ticked_tasks" not in st.session_state:
+        st.session_state.ticked_tasks = {}
+
+    if "bonus_pearls" not in st.session_state:
+        st.session_state.bonus_pearls = 0
+
+    if "is_diving" not in st.session_state:
+        st.session_state.is_diving = False
+
+    if "selected_energy" not in st.session_state:
+        st.session_state.selected_energy = ""
+
     # Ensure an active chat session is loaded if onboarded
     if st.session_state.onboarded:
         store = st.session_state.chat_store

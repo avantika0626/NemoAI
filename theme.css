@@ -1,84 +1,157 @@
 /* =============================================================================
-   Nemo AI — Butter Yellow & Baby Pink Soft Pastel Mesh-Gradient Design System
-   Dreamy, warm, luminous glassmorphism with high-contrast elegant typography
+   Nemo AI — Deep Ocean Animated Theme
+   Design Spec: design/nemo-ui-design.dc.html
+   Colors: #0b2a5c -> #071d45 -> #041230 -> #020819
+   Accents: Cyan #4FD1E0 / #7FE3EE | Orange #FF9A4D | Gold #FFD166
+   Fonts: Fredoka for headings & display, DM Sans for body
    ============================================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Geist:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Fredoka:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Butter Yellow & Baby Pink Soft Pastel Palette */
-  --bg-base: #FFFDF8;
-  --bg-mesh-butter: #FEF08A;
-  --bg-mesh-pink: #FBCFE8;
-  --bg-mesh-rose: #FECDD3;
-  --bg-mesh-peach: #FED7AA;
-  --bg-card: rgba(255, 255, 255, 0.75);
+  --bg-deep-0: #0b2a5c;
+  --bg-deep-1: #071d45;
+  --bg-deep-2: #041230;
+  --bg-deep-3: #020819;
 
-  /* Frosted Pastel Glass Surfaces */
-  --glass-surface-subtle: rgba(255, 255, 255, 0.5);
-  --glass-surface: rgba(255, 255, 255, 0.72);
-  --glass-surface-hover: rgba(255, 255, 255, 0.92);
-  --glass-surface-active: rgba(255, 255, 255, 0.98);
+  --accent-cyan: #4FD1E0;
+  --accent-cyan-light: #7FE3EE;
+  --accent-orange: #FF9A4D;
+  --accent-gold: #FFD166;
+  --accent-rose: #FF7A8A;
 
-  /* Glass Borders */
-  --glass-border: rgba(255, 255, 255, 0.85);
-  --glass-border-subtle: rgba(251, 207, 232, 0.45);
-  --glass-border-hover: rgba(244, 114, 182, 0.55);
-  --glass-border-strong: rgba(255, 255, 255, 0.95);
+  --text-primary: #E6F6FF;
+  --text-secondary: #B5D6E4;
+  --text-muted: #9CC4D6;
+  --text-dim: #7FA9BD;
 
-  /* Typography Colors (Warm, deep, high contrast) */
-  --text-primary: #1C1917;       /* Stone-900 / Deep warm espresso */
-  --text-secondary: #57534E;     /* Stone-600 / Warm slate */
-  --text-muted: #78716C;         /* Stone-500 */
-  --text-dim: #A8A29E;           /* Stone-400 */
+  --glass-navy: rgba(7, 24, 62, 0.72);
+  --glass-navy-subtle: rgba(10, 34, 82, 0.5);
+  --glass-border: rgba(120, 220, 255, 0.22);
+  --glass-border-subtle: rgba(120, 220, 255, 0.12);
+  --glass-border-hover: rgba(79, 209, 224, 0.6);
 
-  /* Sunset Rose & Butter Gold Accents */
-  --accent-rose: #F43F5E;
-  --accent-gold: #F59E0B;
-  --accent-pink: #EC4899;
-  --accent-gradient: linear-gradient(135deg, #FB7185 0%, #F43F5E 50%, #F59E0B 100%);
-  --accent-glow: rgba(244, 63, 94, 0.22);
-  --accent-glow-strong: rgba(244, 63, 94, 0.38);
-
-  /* User Message Bubble (Soft Baby-Pink Glass) */
-  --user-msg-bg: rgba(254, 226, 226, 0.78);
-  --user-msg-border: rgba(251, 113, 133, 0.35);
-  --user-msg-text: #1C1917;
-
-  /* Radii */
-  --radius-sm: 8px;
-  --radius-card: 16px;
-  --radius-lg: 20px;
-  --radius-pill: 999px;
-
-  /* Transitions */
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-smooth: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --font-heading: 'Fredoka', system-ui, -apple-system, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
 }
 
 /* -----------------------------------------------------------------------------
-   Global Canvas & Soft Mesh Gradient Background (Butter Yellow & Baby Pink)
+   Ocean Animations & Keyframes
+   ----------------------------------------------------------------------------- */
+@keyframes nmRise {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: 0.8; }
+  100% { transform: translateY(-115vh) scale(1.25); opacity: 0; }
+}
+
+@keyframes nmDrift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(70px, -50px); }
+}
+
+@keyframes nmRay {
+  0%, 100% { opacity: 0.16; }
+  50% { opacity: 0.45; }
+}
+
+@keyframes nmWave {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes nmKelp {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes nmEnter {
+  from { transform: translateY(-260px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes nmFish {
+  0%, 100% { transform: translateX(-16px) rotate(72deg); }
+  50% { transform: translateX(16px) rotate(90deg); }
+}
+
+@keyframes nmWag {
+  from { transform: rotate(-16deg); }
+  to { transform: rotate(16deg); }
+}
+
+@keyframes nmTrail {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { transform: translateY(-200px) scale(1.1); opacity: 0; }
+}
+
+@keyframes nmFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes nmSwimR {
+  from { transform: translateX(-14vw); }
+  to { transform: translateX(114vw); }
+}
+
+@keyframes nmSwimL {
+  from { transform: translateX(114vw); }
+  to { transform: translateX(-14vw); }
+}
+
+@keyframes nmBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes nmJelly {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  50% { transform: translateY(-36px) scale(1.07, 0.93); }
+}
+
+@keyframes nmTwinkle {
+  0%, 100% { opacity: 0.1; transform: translate(0, 0); }
+  50% { opacity: 0.85; transform: translate(8px, -14px); }
+}
+
+@keyframes nmFlap {
+  from { transform: rotate(-22deg); }
+  to { transform: rotate(24deg); }
+}
+
+@keyframes nmPop {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes nmTick {
+  0% { transform: scale(0.6); }
+  60% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+/* -----------------------------------------------------------------------------
+   Global Streamlit Canvas & Fixed Oceanic Gradient
    ----------------------------------------------------------------------------- */
 html, body {
-  background-color: var(--bg-base) !important;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-deep-2) !important;
   color: var(--text-primary) !important;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-family: var(--font-body) !important;
   overflow-x: hidden !important;
 }
 
-.stApp,
+.stApp {
+  background: linear-gradient(180deg, #0b2a5c 0%, #071d45 26%, #041230 58%, #020819 100%) !important;
+  background-attachment: fixed !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-body) !important;
+}
+
 [data-testid="stAppViewContainer"] {
-  background-color: var(--bg-base) !important;
-  position: relative;
-  background-image:
-    radial-gradient(circle 850px at 10% 12%, rgba(254, 240, 138, 0.85) 0%, rgba(254, 243, 199, 0.45) 45%, transparent 75%),
-    radial-gradient(circle 900px at 88% 22%, rgba(251, 207, 232, 0.85) 0%, rgba(252, 231, 243, 0.4) 50%, transparent 80%),
-    radial-gradient(circle 800px at 52% 48%, rgba(254, 205, 211, 0.75) 0%, rgba(254, 240, 138, 0.3) 45%, transparent 75%),
-    radial-gradient(circle 750px at 85% 85%, rgba(251, 207, 232, 0.8) 0%, rgba(254, 215, 170, 0.35) 50%, transparent 80%),
-    radial-gradient(circle 750px at 12% 88%, rgba(254, 215, 170, 0.75) 0%, rgba(254, 240, 138, 0.4) 45%, transparent 75%);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: transparent !important;
 }
 
 .main,
@@ -92,631 +165,376 @@ section.main,
   background: transparent !important;
 }
 
-/* Hide default streamlit decoration and footer */
 [data-testid="stDecoration"],
 footer {
   display: none !important;
 }
 
 /* -----------------------------------------------------------------------------
-   Sidebar Redesign: Slim, Frosted Glass, Warm Pastel
+   Animated Sea Background Container
+   ----------------------------------------------------------------------------- */
+.nemo-ocean-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* -----------------------------------------------------------------------------
+   Sidebar: Translucent Deep Navy Glass
    ----------------------------------------------------------------------------- */
 section[data-testid="stSidebar"] {
-  background-color: rgba(255, 253, 248, 0.75) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border-right: 1px solid rgba(251, 207, 232, 0.5) !important;
-  transition: all var(--transition-smooth) !important;
+  background: rgba(4, 12, 38, 0.76) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-right: 1px solid var(--glass-border-subtle) !important;
+  padding-top: 14px !important;
+  z-index: 99 !important;
 }
 
-section[data-testid="stSidebar"] .stMarkdown h1,
-section[data-testid="stSidebar"] .stMarkdown h2,
-section[data-testid="stSidebar"] .stMarkdown h3 {
-  color: var(--text-primary) !important;
-  font-weight: 700 !important;
+section[data-testid="stSidebar"] .block-container {
+  padding-top: 1rem !important;
+  padding-bottom: 2rem !important;
 }
 
-/* Search input in sidebar */
-section[data-testid="stSidebar"] [data-testid="stTextInput"] input {
-  background-color: rgba(255, 255, 255, 0.75) !important;
-  border: 1px solid rgba(251, 207, 232, 0.6) !important;
-  border-radius: var(--radius-sm) !important;
-  color: var(--text-primary) !important;
-  font-size: 0.82rem !important;
-  padding: 6px 10px !important;
+/* Logo Pill (Starts new chat) */
+.nemo-logo-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 220, 255, 0.2);
+  background: rgba(10, 34, 82, 0.6);
+  color: #E6F6FF;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.5px;
 }
 
-section[data-testid="stSidebar"] [data-testid="stTextInput"] input::placeholder {
-  color: var(--text-muted) !important;
-}
-
-section[data-testid="stSidebar"] [data-testid="stTextInput"] input:focus {
-  border-color: var(--accent-rose) !important;
-  box-shadow: 0 0 10px var(--accent-glow) !important;
-  outline: none !important;
-}
-
-/* Sidebar "New Chat" Button (Primary Gradient) */
-section[data-testid="stSidebar"] button[kind="primary"] {
-  background: var(--accent-gradient) !important;
-  color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  border-radius: var(--radius-sm) !important;
-  font-weight: 600 !important;
-  font-size: 0.88rem !important;
-  padding: 8px 14px !important;
-  box-shadow: 0 4px 14px var(--accent-glow) !important;
-  transition: all var(--transition-fast) !important;
-  text-align: center !important;
-}
-
-section[data-testid="stSidebar"] button[kind="primary"]:hover {
-  box-shadow: 0 6px 20px var(--accent-glow-strong) !important;
+.nemo-logo-pill:hover {
+  background: rgba(79, 209, 224, 0.2);
+  border-color: rgba(79, 209, 224, 0.5);
   transform: translateY(-1px);
 }
 
-section[data-testid="stSidebar"] button[kind="primary"] * {
+/* Sidebar Chat Nav Rows */
+.nm-group-label {
+  padding: 12px 10px 4px;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.nm-chat-row {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  min-height: 40px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 0;
+  color: #E6F6FF;
+  font: 400 14px var(--font-body);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: transparent;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.nm-chat-row:hover {
+  background: rgba(79, 209, 224, 0.12) !important;
+}
+
+.nm-chat-row.active {
+  background: rgba(79, 209, 224, 0.18) !important;
   color: #FFFFFF !important;
-  -webkit-text-fill-color: #FFFFFF !important;
+  font-weight: 500;
 }
 
-/* Ghost / Outlined Style for All Other Sidebar Buttons (Recents, Delete, Reset) */
-section[data-testid="stSidebar"] button:not([kind="primary"]) {
-  background-color: transparent !important;
-  background: transparent !important;
-  color: var(--text-secondary) !important;
-  border: 1px solid transparent !important;
-  border-radius: var(--radius-sm) !important;
-  font-size: 0.84rem !important;
-  font-weight: 500 !important;
-  text-align: left !important;
-  padding: 7px 10px !important;
-  margin-bottom: 2px !important;
-  transition: all var(--transition-fast) !important;
+/* Sidebar Reef & Timer Cards */
+.nm-side-card {
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(10, 34, 82, 0.52);
+  border: 1px solid rgba(120, 220, 255, 0.18);
+  margin-top: 10px;
+  backdrop-filter: blur(8px);
 }
 
-section[data-testid="stSidebar"] button:not([kind="primary"]) * {
-  color: var(--text-secondary) !important;
-  -webkit-text-fill-color: var(--text-secondary) !important;
-  font-weight: 500 !important;
-  transition: color var(--transition-fast) !important;
-}
-
-section[data-testid="stSidebar"] button:not([kind="primary"]):hover {
-  background-color: rgba(254, 240, 138, 0.3) !important;
-  border-color: rgba(251, 207, 232, 0.5) !important;
-  color: var(--text-primary) !important;
-}
-
-section[data-testid="stSidebar"] button:not([kind="primary"]):hover * {
-  color: var(--text-primary) !important;
-  -webkit-text-fill-color: var(--text-primary) !important;
-}
-
-/* Active chat item indicator in recents */
-section[data-testid="stSidebar"] button:has(p:contains("📍")),
-section[data-testid="stSidebar"] button:has(span:contains("📍")) {
-  background-color: rgba(251, 207, 232, 0.5) !important;
-  border-color: rgba(244, 114, 182, 0.5) !important;
-  color: #9F1239 !important;
-}
-
-section[data-testid="stSidebar"] button:has(p:contains("📍")) *,
-section[data-testid="stSidebar"] button:has(span:contains("📍")) * {
-  color: #9F1239 !important;
-  -webkit-text-fill-color: #9F1239 !important;
-  font-weight: 600 !important;
+/* Buttons in Sidebar */
+.nm-side-card button {
+  font-family: var(--font-body) !important;
 }
 
 /* -----------------------------------------------------------------------------
-   Top Bar Navigation (Inside Main Area)
+   Hero & Prompt Box
    ----------------------------------------------------------------------------- */
-.top-nav-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: var(--radius-card);
-  margin-bottom: 20px;
-  box-shadow: 0 4px 20px rgba(244, 114, 182, 0.08);
+.nm-hero-wrap {
+  text-align: center;
+  max-width: 720px;
+  margin: 20px auto 10px auto;
 }
 
-.top-pill-toggle {
+.nm-h1 {
+  margin: 0 0 12px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 1.05;
+  letter-spacing: 0.3px;
+  color: #E6F6FF;
+}
+
+.nm-hero-subtitle {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.55;
+  color: #B5D6E4;
+}
+
+/* Big Glass Prompt Box */
+.nm-prompt-card {
+  width: 100%;
+  max-width: 760px;
+  margin: 18px auto;
+  box-sizing: border-box;
+  padding: 18px 20px 14px;
+  border-radius: 26px;
+  border: 1px solid rgba(120, 220, 255, 0.25);
+  background: rgba(7, 24, 62, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 20px 60px rgba(0, 5, 12, 0.5);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.nm-prompt-card:focus-within {
+  border-color: rgba(79, 209, 224, 0.7);
+  box-shadow: 0 20px 60px rgba(79, 209, 224, 0.18);
+}
+
+/* Chips & Pills */
+.nm-chip {
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 220, 255, 0.25);
+  background: rgba(7, 24, 62, 0.6);
+  color: #E6F6FF;
+  font: 500 14px var(--font-body);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(251, 207, 232, 0.45);
-  border: 1px solid rgba(244, 114, 182, 0.4);
-  border-radius: var(--radius-pill);
-  padding: 5px 14px;
-  font-size: 0.82rem;
+  justify-content: center;
+}
+
+.nm-chip:hover {
+  background: rgba(79, 209, 224, 0.2);
+  border-color: rgba(79, 209, 224, 0.6);
+  transform: translateY(-2px);
+}
+
+.nm-chip.active {
+  background: rgba(79, 209, 224, 0.24);
+  border-color: rgba(79, 209, 224, 0.75);
+  color: #7FE3EE;
   font-weight: 600;
-  color: #BE185D;
 }
 
-/* Top bar popover & pill buttons */
-[data-testid="stPopover"] > button {
-  background: rgba(255, 255, 255, 0.75) !important;
-  color: var(--text-secondary) !important;
-  border: 1px solid rgba(251, 207, 232, 0.6) !important;
-  border-radius: var(--radius-pill) !important;
-  font-size: 0.82rem !important;
-  font-weight: 500 !important;
-  padding: 5px 14px !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
-  transition: all var(--transition-fast) !important;
+/* Primary Dive In / Action Buttons */
+.nm-btn-dive {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 16px;
+  border: 0;
+  background: #FF9A4D;
+  color: #04202f;
+  font: 700 16px var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(255, 154, 77, 0.35);
+  transition: transform 0.2s, filter 0.2s;
 }
 
-[data-testid="stPopover"] > button * {
-  color: var(--text-secondary) !important;
-  -webkit-text-fill-color: var(--text-secondary) !important;
-}
-
-[data-testid="stPopover"] > button:hover {
-  background: #FFFFFF !important;
-  border-color: var(--accent-rose) !important;
-  color: var(--text-primary) !important;
-  box-shadow: 0 0 12px var(--accent-glow) !important;
-}
-
-[data-testid="stPopover"] > button:hover * {
-  color: var(--text-primary) !important;
-  -webkit-text-fill-color: var(--text-primary) !important;
-}
-
-/* Popover Content Card */
-[data-testid="stPopoverBody"] {
-  background-color: #FFFDF9 !important;
-  border: 1px solid rgba(251, 207, 232, 0.7) !important;
-  border-radius: var(--radius-card) !important;
-  box-shadow: 0 16px 40px rgba(244, 114, 182, 0.16) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  color: var(--text-primary) !important;
-  padding: 16px !important;
+.nm-btn-dive:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 22px rgba(255, 154, 77, 0.5);
 }
 
 /* -----------------------------------------------------------------------------
-   Empty State Hero & Center Input Card
+   Chat Thread & Plan Cards
    ----------------------------------------------------------------------------- */
-.empty-state-hero {
+.nm-msg {
+  animation: nmPop 0.35s ease both;
+  margin-bottom: 20px;
+}
+
+/* User Message: Right-aligned cyan glass bubble */
+.nm-user-bubble {
+  max-width: 78%;
+  margin-left: auto;
+  padding: 14px 18px;
+  border-radius: 22px 22px 6px 22px;
+  background: rgba(79, 209, 224, 0.18);
+  border: 1px solid rgba(79, 209, 224, 0.35);
+  font-size: 16px;
+  line-height: 1.5;
+  color: #E6F6FF;
+  backdrop-filter: blur(12px);
+}
+
+/* Plan Card Container */
+.nm-plan-box {
+  box-sizing: border-box;
+  padding: 6px 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(120, 220, 255, 0.22);
+  background: rgba(7, 24, 62, 0.72);
+  backdrop-filter: blur(14px);
+  margin-top: 12px;
+}
+
+.nm-plan-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 8px;
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(120, 220, 255, 0.1);
+  transition: background 0.2s;
+}
+
+.nm-plan-row:last-child {
+  border-bottom: none;
+}
+
+.nm-plan-row:hover {
+  background: rgba(79, 209, 224, 0.07);
+}
+
+/* Checkbox */
+.nm-check-btn {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 2px solid rgba(127, 169, 189, 0.8);
+  background: transparent;
+  transition: all 0.2s;
+}
+
+.nm-check-btn.checked {
+  background: #FF9A4D;
+  border-color: #FF9A4D;
+  animation: nmTick 0.3s ease;
+}
+
+/* WhatsApp Link */
+.nm-wa-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(120, 220, 255, 0.28);
+  background: rgba(10, 34, 82, 0.55);
+  color: #E6F6FF;
+  font: 500 14px var(--font-body);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.nm-wa-link:hover {
+  background: rgba(79, 209, 224, 0.2);
+  border-color: #4FD1E0;
+  transform: translateY(-1px);
+}
+
+/* -----------------------------------------------------------------------------
+   Dive Animation View
+   ----------------------------------------------------------------------------- */
+.nm-dive-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0 20px;
   text-align: center;
-  margin: 28px auto 20px auto;
-  max-width: 680px;
-  animation: fadeInSlideUp 350ms ease-out;
 }
 
-.empty-state-greeting {
-  font-size: 2.25rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  color: var(--text-primary);
-  margin-bottom: 6px;
-  background: linear-gradient(135deg, #1C1917 25%, #E11D48 65%, #D97706 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.nm-depth-counter {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 1;
+  color: #7FE3EE;
 }
 
-.empty-state-subtitle {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  margin-bottom: 16px;
-}
-
-/* Container with border=True used for the empty state hero card */
-[data-testid="stVerticalBlockBorderWrapper"] {
-  background: rgba(255, 255, 255, 0.75) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.95) !important;
-  border-radius: 20px !important;
-  box-shadow: 0 12px 35px rgba(244, 114, 182, 0.12), 0 2px 8px rgba(245, 158, 11, 0.05) !important;
-  padding: 12px 16px 8px 16px !important;
-  transition: all var(--transition-fast) !important;
-}
-
-[data-testid="stVerticalBlockBorderWrapper"]:focus-within {
-  border-color: rgba(244, 114, 182, 0.55) !important;
-  box-shadow: 0 14px 40px rgba(244, 114, 182, 0.22) !important;
-}
-
-/* Empty state form inside the container */
-[data-testid="stForm"] {
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 4px 0 0 0 !important;
-  margin: 0 !important;
-}
-
-[data-testid="stForm"] [data-testid="stTextInput"] input {
-  background: transparent !important;
-  border: none !important;
-  color: var(--text-primary) !important;
-  -webkit-text-fill-color: var(--text-primary) !important;
-  font-size: 0.98rem !important;
-  padding: 10px 4px !important;
-}
-
-[data-testid="stForm"] [data-testid="stTextInput"] input::placeholder {
-  color: var(--text-muted) !important;
-  -webkit-text-fill-color: var(--text-muted) !important;
-}
-
-[data-testid="stForm"] [data-testid="stTextInput"] input:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Round send button with up-arrow (Empty hero input card) */
-[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stForm"] button,
-button[kind*="secondaryFormSubmit"],
-button[data-testid*="secondaryFormSubmit"] {
-  background: #1C1917 !important;
-  background-color: #1C1917 !important;
-  color: #FFFFFF !important;
-  border-radius: 999px !important;
-  width: 38px !important;
-  height: 38px !important;
-  min-height: 38px !important;
-  min-width: 38px !important;
-  max-width: 38px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-weight: 800 !important;
-  font-size: 1.18rem !important;
-  padding: 0 !important;
-  margin-left: auto !important;
-  box-shadow: 0 2px 10px rgba(28, 25, 23, 0.25) !important;
-  transition: all var(--transition-fast) !important;
-  border: none !important;
-}
-
-[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stForm"] button *,
-button[kind*="secondaryFormSubmit"] *,
-button[data-testid*="secondaryFormSubmit"] * {
-  color: #FFFFFF !important;
-  -webkit-text-fill-color: #FFFFFF !important;
-  font-weight: 800 !important;
-  font-size: 1.18rem !important;
-}
-
-[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stForm"] button:hover,
-button[kind*="secondaryFormSubmit"]:hover,
-button[data-testid*="secondaryFormSubmit"]:hover {
-  transform: scale(1.08) !important;
-  box-shadow: 0 4px 16px rgba(28, 25, 23, 0.4) !important;
-}
-
-/* Primary form submit button (e.g. Onboarding "Enter Command Center") */
-button[kind*="primaryFormSubmit"],
-button[data-testid*="primaryFormSubmit"] {
-  background: var(--accent-gradient) !important;
-  color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  border-radius: var(--radius-sm) !important;
-  font-weight: 600 !important;
-  font-size: 0.92rem !important;
-  padding: 10px 18px !important;
-  box-shadow: 0 4px 14px var(--accent-glow) !important;
-  transition: all var(--transition-fast) !important;
-  text-align: center !important;
-  width: 100% !important;
-}
-
-button[kind*="primaryFormSubmit"]:hover,
-button[data-testid*="primaryFormSubmit"]:hover {
-  box-shadow: 0 6px 20px var(--accent-glow-strong) !important;
-  transform: translateY(-1px) !important;
-}
-
-button[kind*="primaryFormSubmit"] *,
-button[data-testid*="primaryFormSubmit"] * {
-  color: #FFFFFF !important;
-  -webkit-text-fill-color: #FFFFFF !important;
-}
-
-/* Suggestion chip pill buttons below input */
-.main [data-testid="stHorizontalBlock"] button:not([kind*="FormSubmit"]) {
-  background: rgba(255, 255, 255, 0.75) !important;
-  color: var(--text-secondary) !important;
-  border: 1px solid rgba(255, 255, 255, 0.95) !important;
-  border-radius: 999px !important;
-  font-size: 0.82rem !important;
-  font-weight: 500 !important;
-  padding: 8px 14px !important;
-  box-shadow: 0 2px 8px rgba(244, 114, 182, 0.08) !important;
-  transition: all var(--transition-fast) !important;
-  text-align: center !important;
-}
-
-.main [data-testid="stHorizontalBlock"] button:not([kind*="FormSubmit"]):hover {
-  background: #FFFFFF !important;
-  border-color: rgba(244, 114, 182, 0.5) !important;
-  color: #BE185D !important;
-  transform: translateY(-1px) !important;
-  box-shadow: 0 4px 14px var(--accent-glow) !important;
-}
-
-.main [data-testid="stHorizontalBlock"] button:not([kind*="FormSubmit"]) * {
-  color: inherit !important;
-  -webkit-text-fill-color: inherit !important;
-  border-radius: 999px !important;
-}
-
-/* Sidebar Collapse / Expand Toggle Buttons */
-[data-testid="collapsedControl"],
-[data-testid="stSidebarCollapseButton"] {
-  color: var(--text-secondary) !important;
-  background: rgba(255, 255, 255, 0.75) !important;
-  border: 1px solid rgba(251, 207, 232, 0.6) !important;
-  border-radius: var(--radius-sm) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  transition: all var(--transition-fast) !important;
-}
-
-[data-testid="collapsedControl"]:hover,
-[data-testid="stSidebarCollapseButton"]:hover {
-  background: #FFFFFF !important;
-  border-color: var(--accent-rose) !important;
-  color: var(--text-primary) !important;
-  box-shadow: 0 0 12px var(--accent-glow) !important;
-}
-
-[data-testid="collapsedControl"] svg,
-[data-testid="stSidebarCollapseButton"] svg {
-  fill: currentColor !important;
-  stroke: currentColor !important;
+.nm-dive-status {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  margin-top: 8px;
+  color: #E6F6FF;
+  animation: nmFloat 3s ease-in-out infinite;
 }
 
 /* -----------------------------------------------------------------------------
-   Chat Messages (Right-aligned user, Left-aligned assistant)
+   Custom Scrollbar
    ----------------------------------------------------------------------------- */
-[data-testid="stChatMessage"] {
-  background-color: transparent !important;
-  border: none !important;
-  padding: 8px 12px !important;
-  margin-bottom: 12px !important;
-  animation: fadeInSlideUp 250ms ease-out;
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-/* User Message: Right-aligned, soft baby-pink glass bubble */
-[data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) {
-  background: var(--user-msg-bg) !important;
-  border: 1px solid var(--user-msg-border) !important;
-  border-radius: 18px 18px 4px 18px !important;
-  margin-left: auto !important;
-  max-width: 82% !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  box-shadow: 0 4px 15px rgba(244, 114, 182, 0.12) !important;
+::-webkit-scrollbar-track {
+  background: rgba(4, 18, 48, 0.5);
 }
 
-[data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) p {
-  color: var(--user-msg-text) !important;
-  font-size: 0.94rem !important;
-  line-height: 1.5 !important;
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 220, 255, 0.25);
+  border-radius: 4px;
 }
 
-/* Assistant / Nemo Message: Left-aligned, no heavy box, clean typography */
-[data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]),
-[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatar"]) {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  margin-right: auto !important;
-  max-width: 92% !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  box-shadow: none !important;
-  padding: 6px 4px !important;
-}
-
-[data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]) [data-testid="stChatMessageAvatar"],
-[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatar"]) [data-testid="stChatMessageAvatar"] {
-  background: rgba(251, 207, 232, 0.45) !important;
-  border: 1px solid rgba(244, 114, 182, 0.4) !important;
-  border-radius: 50% !important;
-  width: 32px !important;
-  height: 32px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-[data-testid="stChatMessage"] p,
-[data-testid="stChatMessage"] li,
-[data-testid="stChatMessage"] span {
-  color: var(--text-primary) !important;
-  font-size: 0.94rem !important;
-  line-height: 1.6 !important;
-}
-
-[data-testid="stChatMessage"] strong,
-[data-testid="stChatMessage"] b {
-  color: #1C1917 !important;
-  font-weight: 700 !important;
-}
-
-[data-testid="stChatMessage"] code {
-  background: rgba(254, 240, 138, 0.35) !important;
-  color: #9F1239 !important;
-  border: 1px solid rgba(251, 207, 232, 0.5) !important;
-  border-radius: 4px !important;
-  padding: 2px 6px !important;
-  font-size: 0.86rem !important;
-}
-
-[data-testid="stChatMessage"] pre {
-  background: rgba(255, 255, 255, 0.8) !important;
-  border: 1px solid rgba(251, 207, 232, 0.5) !important;
-  border-radius: var(--radius-sm) !important;
-  box-shadow: 0 4px 14px rgba(244, 114, 182, 0.08) !important;
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 209, 224, 0.5);
 }
 
 /* -----------------------------------------------------------------------------
-   Bottom Chat Input Bar (Pinned with Gradient Fade Above It)
+   Accessibility: Reduced Motion
    ----------------------------------------------------------------------------- */
-[data-testid="stBottom"] {
-  background: transparent !important;
-}
-
-[data-testid="stBottom"] > div {
-  background: linear-gradient(180deg, transparent 0%, rgba(255, 253, 248, 0.85) 35%, rgba(255, 253, 248, 0.98) 100%) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border-top: none !important;
-  padding-top: 24px !important;
-  padding-bottom: 14px !important;
-}
-
-[data-testid="stChatInput"] {
-  border-radius: 20px !important;
-  background-color: rgba(255, 255, 255, 0.85) !important;
-  border: 1px solid rgba(251, 207, 232, 0.7) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  box-shadow: 0 10px 30px rgba(244, 114, 182, 0.12) !important;
-  transition: all var(--transition-fast) !important;
-}
-
-[data-testid="stChatInput"]:focus-within {
-  border-color: rgba(244, 114, 182, 0.6) !important;
-  box-shadow: 0 12px 35px var(--accent-glow) !important;
-}
-
-[data-testid="stChatInput"] textarea {
-  background-color: transparent !important;
-  color: var(--text-primary) !important;
-  -webkit-text-fill-color: var(--text-primary) !important;
-  caret-color: var(--accent-rose) !important;
-  font-size: 0.94rem !important;
-}
-
-[data-testid="stChatInput"] textarea::placeholder {
-  color: var(--text-muted) !important;
-  -webkit-text-fill-color: var(--text-muted) !important;
-}
-
-/* Round send button with up-arrow */
-[data-testid="stChatInput"] button {
-  background-color: #1C1917 !important;
-  border-radius: 50% !important;
-  width: 34px !important;
-  height: 34px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-shadow: 0 2px 8px rgba(28, 25, 23, 0.25) !important;
-  transition: all var(--transition-fast) !important;
-}
-
-[data-testid="stChatInput"] button svg {
-  fill: #FFFFFF !important;
-  color: #FFFFFF !important;
-}
-
-[data-testid="stChatInput"] button:hover {
-  transform: scale(1.06) !important;
-  box-shadow: 0 4px 12px rgba(28, 25, 23, 0.4) !important;
-}
-
-/* -----------------------------------------------------------------------------
-   File Uploader Soft Glass
-   ----------------------------------------------------------------------------- */
-[data-testid="stFileUploader"] {
-  background-color: rgba(255, 255, 255, 0.65) !important;
-  border: 1px solid rgba(251, 207, 232, 0.6) !important;
-  border-radius: var(--radius-card) !important;
-  padding: 12px 14px !important;
-}
-
-[data-testid="stFileUploaderDropzone"] {
-  background-color: rgba(254, 240, 138, 0.15) !important;
-  border: 1px dashed rgba(244, 114, 182, 0.35) !important;
-  border-radius: 10px !important;
-  padding: 10px !important;
-}
-
-[data-testid="stFileUploaderDropzone"]:hover {
-  border-color: var(--accent-rose) !important;
-  background-color: rgba(251, 207, 232, 0.2) !important;
-}
-
-[data-testid="stFileUploaderDropzone"] * {
-  color: var(--text-secondary) !important;
-}
-
-/* -----------------------------------------------------------------------------
-   Selectbox & Dropdowns
-   ----------------------------------------------------------------------------- */
-[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-  background-color: rgba(255, 255, 255, 0.75) !important;
-  border: 1px solid rgba(251, 207, 232, 0.6) !important;
-  border-radius: var(--radius-sm) !important;
-  color: var(--text-secondary) !important;
-  font-size: 0.82rem !important;
-}
-
-/* -----------------------------------------------------------------------------
-   Keyframe Animations
-   ----------------------------------------------------------------------------- */
-@keyframes fadeInSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* -----------------------------------------------------------------------------
-   Responsive Breakpoints & Mobile Polish
-   ----------------------------------------------------------------------------- */
-@media (max-width: 768px) {
-  .empty-state-greeting {
-    font-size: 1.6rem !important;
-  }
-  .empty-state-subtitle {
-    font-size: 0.88rem !important;
-  }
-  .top-nav-bar {
-    padding: 6px 10px !important;
-    margin-bottom: 12px !important;
-  }
-  /* On mobile: sidebar collapses cleanly into an overlay drawer */
-  section[data-testid="stSidebar"] {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    bottom: 0 !important;
-    width: 290px !important;
-    max-width: 85vw !important;
-    z-index: 999999 !important;
-    box-shadow: 0 0 60px rgba(0, 0, 0, 0.15) !important;
-  }
-  /* Top-bar buttons collapse into compact icons on mobile */
-  [data-testid="stPopover"] > button {
-    padding: 5px 8px !important;
-    font-size: 0.76rem !important;
-  }
-  /* Suggestion chips compact padding on mobile */
-  .main [data-testid="stHorizontalBlock"] button {
-    font-size: 0.76rem !important;
-    padding: 6px 10px !important;
-    margin-bottom: 4px !important;
-  }
-  [data-testid="stChatMessage"] {
-    max-width: 98% !important;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

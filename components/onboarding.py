@@ -1,5 +1,6 @@
 """Screen 1: User Onboarding Flow (Dark Glass Style)."""
 
+import textwrap
 import streamlit as st
 
 from services.storage_service import create_new_chat_session
@@ -12,16 +13,16 @@ def render_onboarding_screen() -> None:
     with col_ob2:
         with st.form("nemo_onboard_form", clear_on_submit=False):
             st.markdown(
-                """
+                textwrap.dedent("""
                 <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 8px;">
                   <span style="font-size: 2.2rem; line-height: 1;">🐠</span>
                   <div>
-                    <h2 style="margin: 0; font-size: 1.55rem; font-weight: 800; color: #1C1917; letter-spacing: -0.3px;">Welcome to Nemo AI</h2>
-                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; color: #57534E;">Your day. Your tasks. Your flow.</p>
+                    <h2 style="margin: 0; font-family: 'Fredoka', sans-serif; font-size: 1.65rem; font-weight: 600; color: #E6F6FF; letter-spacing: 0.3px;">Welcome to Nemo AI</h2>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; color: #B5D6E4;">Your day. Your tasks. Your flow.</p>
                   </div>
                 </div>
-                <hr style="border: 0; border-top: 1px solid rgba(251, 207, 232, 0.6); margin: 16px 0 20px 0;" />
-                """,
+                <hr style="border: 0; border-top: 1px solid rgba(120, 220, 255, 0.22); margin: 16px 0 20px 0;" />
+                """).strip(),
                 unsafe_allow_html=True,
             )
             name_input = st.text_input(

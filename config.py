@@ -16,6 +16,7 @@ CANDIDATE_MODELS = [
 MODEL_NAME = CANDIDATE_MODELS[0]
 
 NEMO_SYSTEM_PROMPT = getattr(prompts, "NEMO_SYSTEM_PROMPT", getattr(prompts, "SYSTEM_PROMPT", ""))
+get_system_prompt = getattr(prompts, "get_system_prompt", lambda: NEMO_SYSTEM_PROMPT)
 WELCOME_MESSAGE_TEMPLATE = getattr(prompts, "WELCOME_MESSAGE_TEMPLATE", "Hey {name}! I'm Nemo 🐠 your personal planning companion.")
 DEFAULT_IMAGE_PROMPT = getattr(prompts, "DEFAULT_IMAGE_PROMPT", "Please extract all tasks from this image and build a plan.")
 PLAN_SUMMARY_PROMPT = getattr(prompts, "PLAN_SUMMARY_PROMPT", getattr(prompts, "SUMMARY_REQUEST_PROMPT", "Summarize this plan for WhatsApp."))
