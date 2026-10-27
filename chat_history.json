@@ -1,0 +1,116 @@
+{
+  "chats": {
+    "chat_1792603907512": {
+      "id": "chat_1792603907512",
+      "title": "New Plan",
+      "created_at": "2026-10-21T23:01:47.512481",
+      "updated_at": "2026-10-21T23:01:47.512481",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Hey tiya! I'm **Nemo** 🐠 — your AI planning strategist and productivity command center.\n\nWhether you're juggling a 10-hour college schedule with coding bootcamps like NxtWave, prepping for placements, or trying to conquer a chaotic to-do list, I'm here to build a high-efficiency routine that actually works with your real life.\n\n**Here's how we can start:**\n- 🗓️ Tell me your daily schedule or target deadlines\n- 🧠 Drop a braindump of everything on your mind\n- 📸 Upload a photo of your handwritten notes or timetable\n\nWhen you're happy with your schedule, click **'📲 Send My Plan'** in the sidebar to sync it straight to your WhatsApp!",
+          "image": null
+        }
+      ],
+      "plan_summary": ""
+    },
+    "chat_1793025018911": {
+      "id": "chat_1793025018911",
+      "title": "Help me build a balanced",
+      "created_at": "2026-10-26T20:00:18.911441",
+      "updated_at": "2026-10-26T20:02:45.250922",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Hey tiya! I'm **Nemo** 🐠 — your AI planning strategist and productivity command center.\n\nWhether you're juggling a 10-hour college schedule with coding bootcamps like NxtWave, prepping for placements, or trying to conquer a chaotic to-do list, I'm here to build a high-efficiency routine that actually works with your real life.\n\n**Here's how we can start:**\n- 🗓️ Tell me your daily schedule or target deadlines\n- 🧠 Drop a braindump of everything on your mind\n- 📸 Upload a photo of your handwritten notes or timetable\n\nWhen you're happy with your schedule, click **'📲 Send My Plan'** in the sidebar to sync it straight to your WhatsApp!",
+          "image": null
+        },
+        {
+          "role": "user",
+          "content": "Help me build a balanced study timetable with breaks for my upcoming assignments.",
+          "image": null,
+          "mime_type": null
+        },
+        {
+          "role": "user",
+          "content": "hey nemo i need you to plan my day. ive got to manage my engineering studies as well as my prepartion for my GATE examiniationw hich wil be held in april ig and also i should also study for my internship. my classes are from 9 am to 5pm so now plan my day so that i can work effeciently",
+          "image": null,
+          "mime_type": null
+        },
+        {
+          "role": "assistant",
+          "content": "Hey there! 🐠 Let's take a deep breath. I see you, and I hear you. \n\nBalancing a heavy engineering college schedule from **9 AM to 5 PM**, prepping for a high-stakes **GATE exam** in April, *and* juggling **internship prep**? That is an absolute triathlon. It’s completely normal to feel like there aren’t enough hours in the day when your foundation block is already eaten up by an 8-hour college day plus transit. \n\nLet's do some honest cognitive math. We are *not* going to suggest waking up at 4 AM or sleeping 4 hours—that’s a fast track to burnout, and fried brains don't retain complex algorithms or core engineering concepts anyway. \n\nLet’s look at your daily operational reality:\n* **09:00 AM – 05:00 PM:** College classes (8 solid hours). \n* **Transit & Buffer:** Let's assume ~1 to 1.5 hours total for getting to and from college.\n* **Restorative Sleep:** 7.5 hours (non-negotiable for memory consolidation).\n* **Meals & Hygiene:** ~2 hours spread across the day.\n* **Remaining Usable Waking Hours:** This leaves us with a focused, high-value window of **3 to 4 hours** on weekdays. \n\nTo make this work without crashing, we need to treat your time like venture capital. We will split your focus: **Internship prep (building/coding/practical)** and **GATE (core theory/problem solving)**, while weaponizing your commute and college \"gap periods\" for low-friction wins.\n\nHere are **two battle-tested strategic paths**. Pick the one that matches your natural energy rhythm.\n\n---\n\n### 🗺️ Path A: The Late-Night Deep-Work Engine\n*Best for night owls who find their flow after dinner when the household and world finally go quiet.*\n\n* **07:00 AM – 07:45 AM:** Wake up, light stretch, hydration, and a high-protein breakfast. *(Zero study here—save your willpower).*\n* **08:15 AM – 05:30 PM:** College + Commute. \n  * 💡 *Nemo's Dead-Time Hack:* Use transit or boring college lecture gaps to review flashcards (Anki) or read 2 pages of a GATE subject or internship tech stack docs on your phone.\n* **05:30 PM – 07:30 PM:** Decompress & Dinner. (Go for a walk, listen to music, completely detach from books to reset your dopamine).\n* **07:30 PM – 09:15 PM (Block 1 - GATE Power Hour):** High-Friction Problem Solving.\n  * *Phase 1 (15m):* Formula/concept review.\n  * *Phase 2 (50m):* Solve numerical problems from a specific GATE topic.\n  * *Phase 3 (20m):* Debug mistakes and write down sticky concepts.\n* **09:30 PM – 11:00 PM (Block 2 - Internship Prep):** Hands-on Execution.\n  * Focus on building, coding, or learning specific tools required for your internship.\n* **11:00 PM – 11:30 PM:** Wind down, plan tomorrow’s 3 major tasks.\n* **11:45 PM – 07:15 AM:** 7.5 Hours of Deep Sleep. 🌙\n\n* **Pros:** Complete silence at night lets you get into deep \"flow states.\"\n* **Cons:** Requires strict discipline not to waste the 5:30 PM – 7:30 PM window scrolling on your phone.\n\n---\n\n### ⚡ Path B: The Early-Bird Victory Block\n*Best for those whose brains turn to mush by 9 PM and function best with a fresh, quiet morning slate.*\n\n* **06:00 AM – 07:45 AM (The Morning Sprint):** \n  * *06:00 - 06:45:* GATE core subject deep study (fresh mind = maximum retention for tough engineering math/theory).\n  * *06:45 - 07:30:* Internship prep or coding sprint.\n  * *07:30 - 07:45:* Pack bag, quick review.\n* **08:15 AM – 05:30 PM:** College + Commute. (Use campus library gaps or travel time for light revision, video overviews, or syntax checks).\n* **05:30 PM – 07:00 PM:** Decompress, workout, eat dinner.\n* **07:00 PM – 09:00 PM (Evening Light Block):** \n  * Lower-friction work: Watch a recorded lecture at 1.25x speed, solve easier practice problems, or organize notes. \n* **09:30 PM:** Wind down and disconnect.\n* **10:00 PM – 06:00 AM:** 8 Hours of Restorative Sleep. ☀️\n\n* **Pros:** Your heaviest mental lifting is done before you even step foot in college. Your evenings are free-ish.\n* **Cons:** Demands brutal consistency with waking up early.\n\n---\n\n### 🚀 The Asymmetric Weekend Multiplier\nWeekdays are about holding the line and making steady progress. Your **weekends (Saturday & Sunday)** are where you actually win the war for GATE and your internship. \n* **Saturday & Sunday (4.5 hours each day):**\n  * *Morning Block (2.5 hours):* Full-length GATE mock test analysis or heavy technical project building for your internship.\n  * *Afternoon Block (2 hours):* Revision of weekly backlog + college assignment cleanup.\n  * *Rest of the day:* Rest, socialize, and recharge so you don't burn out.\n\n---\n\n### 🎯 Calibrate With Me:\nTo lock this in so it actually works for *your* specific life, tell me:\n1. **Which chronotype are you?** Do you naturally come alive at night (Path A), or are you a morning person (Path B)?\n2. **What are your specific focus areas?** (e.g., Which branch of engineering for GATE? What tech stack for the internship?) \n\nDrop your thoughts below, and let's fine-tune your engine! 🐠⚡",
+          "image": null
+        }
+      ],
+      "plan_summary": ""
+    },
+    "chat_1793027263745": {
+      "id": "chat_1793027263745",
+      "title": "Let's build a realistic, tim",
+      "created_at": "2026-10-26T20:37:43.745559",
+      "updated_at": "2026-10-26T21:30:39.682053",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Hey tiya! I'm **Nemo** 🐠 — your AI planning strategist and productivity command center.\n\nWhether you're juggling a 10-hour college schedule with coding bootcamps like NxtWave, prepping for placements, or trying to conquer a chaotic to-do list, I'm here to build a high-efficiency routine that actually works with your real life.\n\n**Here's how we can start:**\n- 🗓️ Tell me your daily schedule or target deadlines\n- 🧠 Drop a braindump of everything on your mind\n- 📸 Upload a photo of your handwritten notes or timetable\n\nWhen you're happy with your schedule, click **'📲 Send My Plan'** in the sidebar to sync it straight to your WhatsApp!",
+          "image": null
+        },
+        {
+          "role": "user",
+          "content": "Let's build a realistic, time-blocked plan for my day today with breaks.",
+          "image": null,
+          "mime_type": null
+        },
+        {
+          "role": "assistant",
+          "content": "Hey there! 🐠 Let's get this locked in. \n\nBefore we start building blocks, let's get real for a second. We’ve all had those days where the calendar looks like a tetris game designed by a villain, and by 2 PM, our brains feel like scrambled eggs. We are *not* going to build some robotic, impossible schedule that assumes you're a machine that runs on pure willpower and zero coffee. \n\nTo build a plan that actually *survives* contact with your real life today, I need to know your baseline. Drop me a quick status update on:\n\n1. **What are the fixed, non-negotiable blocks today?** (e.g., college from 9 AM to 7 PM, work, commute, classes?)\n2. **What are the actual tasks staring you down?** (e.g., NxtWave coding session, placement prep, college assignments, catching up on sleep?)\n3. **What is your energy profile right now?** Are you dragging, or do you have a specific window where your brain usually clicks into gear?\n\nTell me what today looks like, and we'll architect a battle-tested roadmap with built-in breaks so you can crush what matters and still keep your sanity intact. What are we working with? ⚡",
+          "image": null
+        },
+        {
+          "role": "user",
+          "content": "Plan my day from 8 AM to 10 PM. I have college 9-1, a coding bootcamp 6-8 PM, and I want to fit DSA practice, gym, and a 2-hour study block.",
+          "image": null,
+          "mime_type": null
+        },
+        {
+          "role": "assistant",
+          "content": "Look at this lineup: College from 9 to 1, a coding bootcamp from 6 to 8, plus DSA, gym, and a 2-hour study block packed in between. ⚡ \n\nThat is an ambitious, high-density day, my friend. Let's be completely honest with ourselves: if we try to grind every single minute without breathing room, your brain will wave the white flag by mid-afternoon. We need a system that balances brute-force execution with real human recovery so you don't burn out by Thursday.\n\nLet's do the cognitive math on your day. You have roughly **14 hours** of waking time between 8 AM and 10 PM. With your fixed blocks and a non-negotiable 7.5 hours of sleep tonight, every minute counts, but *pacing* is our superpower here.\n\nSince everyone’s energy curve looks different, I’ve designed **two battle-tested paths** for you today. Take a look and see which one matches your rhythm:\n\n---\n\n### 🗺️ Path A: The Post-College Deep-Work Engine\n*Best if you prefer getting your heavy lifting (DSA + Study) done in the afternoon while your momentum from college is still rolling, leaving your evening totally free after bootcamp.*\n\n* **08:00 AM – 08:45 AM | Morning Launchpad ☕**\n  * *Activity:* Wake up, hydrate, high-protein breakfast, and quick review of today’s targets. Protect your morning calm.\n* **08:45 AM – 09:00 AM | Transit / Setup**\n* **09:00 AM – 01:00 PM | 🎓 College Block**\n  * *Tip:* During lectures, use low-friction downtime to mentally prep or jot down what you need to tackle later.\n* **01:00 PM – 02:00 PM | Lunch & Decompression 🥗**\n  * *Rule:* Step away from screens. Let your digestive system and eyes rest.\n* **02:00 PM – 04:00 PM | 🧠 High-Friction Study Block (2 Hours)**\n  * *Phase 1 (15m):* Review notes or prep core concepts.\n  * *Phase 2 (90m):* Deep focused reading, problem-solving, or core assignment execution.\n  * *Phase 3 (15m):* Quick wrap-up and memory consolidation.\n* **04:00 PM – 05:00 PM | 💻 DSA Practice Sprint (1 Hour)**\n  * *Action:* Solve 1-2 structured problems (e.g., LeetCode/NxtWave arrays or strings) with active debugging. \n* **05:00 PM – 05:45 PM | Transition & Pre-Bootcamp Fuel 🍎**\n  * Light snack, stretch, get your coding environment ready.\n* **06:00 PM – 08:00 PM | ⚡ NxtWave Coding Bootcamp**\n  * *Phase 1:* Active participation and live coding.\n  * *Phase 2:* Immediate post-class bug fixing.\n* **08:00 PM – 09:15 PM | 🏋️‍♂️ Iron Therapy (Gym Session)**\n  * *Action:* Weights or cardio to burn off the day's cognitive fatigue and clear your head.\n* **09:15 PM – 10:00 PM | Dinner, Wind-Down & Sleep Prep 🌙**\n  * *Action:* Eat, zero screens for the last 20 minutes, and prep for solid rest.\n\n---\n\n### 🗺️ Path B: The Evening Recovery & Morning/Late Focus Split\n*Best if your brain is utterly fried after college and you need a physical reset (gym) right after classes before diving back into technical work.*\n\n* **08:00 AM – 08:45 AM | Morning Launchpad ☕**\n* **09:00 AM – 01:00 PM | 🎓 College Block**\n* **01:00 PM – 02:00 PM | Lunch & Reset 🥗**\n* **02:00 PM – 04:00 PM | ☕ Low-Friction Buffer / Passive Review**\n  * *Action:* Use this block for lighter college reading, organizing notes, or catching up on backlog without heavy mental strain.\n* **04:00 PM – 05:15 PM | 🏋️‍♂️ Gym Session (Midday Reset)**\n  * *Action:* Get the physical workout in early to spike your endorphins and combat the post-lunch slump.\n* **05:15 PM – 06:00 PM | Quick Shower & Transition to Bootcamp**\n* **06:00 PM – 08:00 PM | ⚡ NxtWave Coding Bootcamp**\n* **08:00 PM – 09:00 PM | Dinner & Post-Class Fuel 🍽️**\n* **09:00 PM – 10:00 PM | 💻 High-Impact DSA & Study Sprint (1 Hour)**\n  * *Action:* A hyper-focused, distraction-free sprint on one DSA concept while your evening focus is sharp.\n\n---\n\n### ⚖️ The Comparison:\n* **Path A** front-loads your heavy mental work (Study + DSA) while you have daylight energy, leaving your evening open for bootcamp and gym. \n* **Path B** breaks up the afternoon with the gym, giving your brain a physical break before diving into the bootcamp.\n\n🐠 **Here is my calibration question for you:** Looking at these two paths, does **Path A** (getting DSA and studying out of the way before bootcamp and gym) sound like a rhythm you can sustain, or does **Path B** (breaking up the afternoon with the gym) feel better for your stamina? Let me know, and we can fine-tune the micro-breaks!",
+          "image": null
+        }
+      ],
+      "plan_summary": ""
+    },
+    "chat_1793030864740": {
+      "id": "chat_1793030864740",
+      "title": "I only have 2 focused",
+      "created_at": "2026-10-26T21:37:44.740864",
+      "updated_at": "2026-10-26T21:40:24.301159",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Hey tiya! I'm **Nemo** 🐠 — your AI planning strategist and productivity command center.\n\nWhether you're juggling a 10-hour college schedule with coding bootcamps like NxtWave, prepping for placements, or trying to conquer a chaotic to-do list, I'm here to build a high-efficiency routine that actually works with your real life.\n\n**Here's how we can start:**\n- 🗓️ Tell me your daily schedule or target deadlines\n- 🧠 Drop a braindump of everything on your mind\n- 📸 Upload a photo of your handwritten notes or timetable\n\nWhen you're happy with your schedule, click **'📲 Send My Plan'** in the sidebar to sync it straight to your WhatsApp!",
+          "image": null
+        },
+        {
+          "role": "user",
+          "content": "I only have 2 focused hours right now. What is the most high-impact plan I can do?",
+          "image": null,
+          "mime_type": null
+        },
+        {
+          "role": "assistant",
+          "content": "Two hours. That is actually the sweet spot, 🐠. \n\nWhen you have a massive to-do list, an endless backlog, and only 120 minutes on the clock, panic usually tells you to multitask, bounce between three different things, and end up achieving nothing. But if you treat these 120 minutes like a high-stakes surgical strike, you can outperform someone who spends six hours spinning their wheels. \n\nLet's cut through the noise and execute. No fluff, no switching tabs. Here is your **High-Impact 120-Minute Execution Protocol**.\n\n---\n\n### ⏱️ The 120-Minute Surgical Strike Schedule\n\nWe are going to divide this into three strict phases to maximize cognitive output and prevent burnout.\n\n#### **Phase 1: The Triage & Setup (10 Minutes)**\n*Stop thinking about everything else.*\n*   **Minute 0–5 (Brain Dump):** Write down *one* primary goal for these two hours. Not three. Just one. (e.g., \"Finish the user-auth module,\" \"Debug the API routing error,\" or \"Complete Practice Set 4\"). \n*   **Minute 5–10 (Environment Lockdown):** Phone on **Do Not Disturb** (face down). Close every browser tab except what you need for this exact task. Put on your focus playlist (lo-fi, brown noise, or instrumental film scores). \n\n#### **Phase 2: The Deep-Work Sprint (90 Minutes)**\n*This is where the real heavy lifting happens. Divide this into two 45-minute blocks.*\n*   **Block 1 (45 Mins) – Pure Creation/Execution:** Dive straight into the hardest part of the task. Do not check your phone. If you hit a bug or a mental roadblock, write it down on a scratchpad and force yourself to push through for at least 15 more minutes before searching for a solution.\n*   **Micro-Break (5 Mins):** Step away from the screen. Stand up, stretch, get a glass of water. Let your eyes defocus. **Do not scroll social media.**\n*   **Block 2 (40 Mins) – Refinement & Completion:** Polish what you just built. Test the code, write the final paragraph, or solve the remaining problems. Bring it to a clean, logical stopping point where you can say, *\"This piece is done.\"*\n\n#### **Phase 3: The Lock-In & Transition (20 Minutes)**\n*Don't just slam your laptop shut and walk away. Secure your gains.*\n*   **Consolidation (10 Mins):** Commit your code (`git push`), save your notes, or write a 2-sentence summary of where you left off so that the next time you open this project, you don't waste 15 minutes figuring out what you were doing.\n*   **Decompression (10 Mins):** Step away entirely. Breathe. You just got two hours of elite-level work done while most people spend that long scrolling through feeds wondering where the time went.\n\n---\n\n### 💡 Nemo’s Golden Rules for This Sprint:\n1. **Done is better than perfect:** If you run out of time, ship the working version. You can refactor later; momentum matters more right now.\n2. **Guard the boundaries:** If anyone interrupts you during these two hours, politely let them know you are locked into a deep-work sprint and will be available in an hour and a half.\n\n---\n\n### 🎯 Your Calibration Check\nBefore you hit start: **What is the *single, most critical task* you are dropping into this 2-hour window?** \n\nTell me what you're working on, and let's get moving! ⚡",
+          "image": null
+        },
+        {
+          "role": "user",
+          "content": "plan accordig to that screenshot",
+          "image": null
+        }
+      ],
+      "plan_summary": ""
+    }
+  },
+  "active_chat_id": "chat_1793027263745"
+}

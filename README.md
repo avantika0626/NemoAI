@@ -33,11 +33,25 @@ Nemo transforms chaotic to-do lists, handwritten notes, whiteboard photos, and b
 
 ```text
 NemoAI/
-├── app.py                     # Main Streamlit application
-├── prompts.py                 # Nemo AI specialized planning prompts & templates
+├── app.py                     # Main Streamlit application entrypoint (~70 lines)
+├── config.py                  # App configuration, secrets loader & theme loader
+├── prompts.py                 # Specialized Nemo AI planning prompts & templates
+├── theme.css                  # Butter yellow & baby pink soft mesh-gradient design system
+├── components/                # Modular UI components
+│   ├── top_bar.py             # Top nav, WhatsApp sync popover, share & avatar menu
+│   ├── sidebar.py             # Slim frosted sidebar, search, recents & user card
+│   ├── empty_state.py         # Hero greeting, motivation quotes & unified input card
+│   ├── chat_view.py           # Message bubbles, active uploader & streaming handler
+│   └── onboarding.py          # Screen 1 user onboarding and phone consent flow
+├── services/                  # Business & API services
+│   ├── gemini_service.py      # Gemini streaming, multimodal vision & multi-model fallback
+│   ├── twilio_service.py      # WhatsApp dispatch & phone validation
+│   └── storage_service.py     # Persistent chat sessions & JSON history management
+├── utils/                     # Utility helpers
+│   └── quotes.py              # Motivational quotes, greetings & initials generator
 ├── requirements.txt           # Python package dependencies
 ├── README.md                  # Setup and usage documentation
-├── .gitignore                 # Protects secrets and virtual environment from Git
+├── .gitignore                 # Protects secrets, cache, and virtual environment from Git
 └── .streamlit/
     ├── config.toml            # Streamlit UI theme and server configuration
     ├── secrets.toml           # Private API keys (DO NOT COMMIT)

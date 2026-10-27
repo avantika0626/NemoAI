@@ -22,3 +22,7 @@ __pycache__/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Test Screenshots
+*_shot.png
+butter_pink*.png
